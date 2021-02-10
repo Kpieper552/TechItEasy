@@ -228,13 +228,12 @@ RT.textContent = "€" +totalCountRT;
 
 //-onderstaande functie krijg ik niet gewerkt!!!!
 
-function displayProduct (product) {
-  const TVelement = document.createElement("li");
-  TVelement.setAttribute("class", "product-itemTV");
+function displayProduct(product) {
+  const itemTVs = document.createElement("li");
+  itemTVs.setAttribute("class", "product");
   const itemTV = product.type;
-  TVelement.textContent = itemTV;
-
-  const list = document.getelementById("product");
+  itemTV.textContent = itemTV;
+const list = document.getelementById("product");
   list.appendChild(TVelement);
 }
 
@@ -242,11 +241,35 @@ for (let index = 0; index < inventory.length; index++) {
   const product = inventory[index];
   displayProduct(product);
 }
+// bovenstaande opdracht met functie displayProduct geeft geen tv.types weer op de pagina
+// -- de verwijzing gaat ergens verkeerd, maar ik weet niet waar!!
+
 
 //Opdracht5
-// [ ] presenteer tv in bepaalde context op de pagina
 
-//bonus
-// [ ] maak 3 knoppen
+const TVObject = inventory.map((inventory) => {
+  return inventory.brand + " | " + inventory.name + " | " + inventory.type + "| price €" + inventory.price + ",--  |" + inventory.availableSizes + "  inches --> to CM " + (inventory.availableSizes = inventory.availableSizes * 2.54);
+})
+//console.log(TVObject);
+// uitkomt klopt behalve bij een aantal size inch to cm zie notes file
+// daarna krijg ik onderstaande niet op de pagina!
+
+document.createElement("TVObject");
+TVObject.appendChild("TVOBJ");
+
+//5c display functie werkt nog niet vanuit 4!
+
+//bonus// knop met addEventlistener
+
+function SoldOUT(television) {
+const TypeSoldout = inventory.filter((inventory) => {
+  return inventory.sold == inventory.originalStock;
+});
+}
+document.addEventListener("alert");
+SoldOUT.appendChild("alert");
+// knop werkt niet . de appendChild linkt niet!
+//console.log(TypeSoldout);
+
 
 
