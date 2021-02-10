@@ -226,16 +226,22 @@ const totalCountRT = countRT(inventory);
 const RT = document.getElementById("RT");
 RT.textContent = "€" +totalCountRT;
 
-//-
+//-onderstaande functie krijg ik niet gewerkt!!!!
 
-const TVelement = document.createElement("li");
-TVelement.setAttribute("class", "product-list-itemTV");
-const itemsTV = inventory[0].type;
-TVelement.textContent = itemsTV;
+function displayProduct (product) {
+  const TVelement = document.createElement("li");
+  TVelement.setAttribute("class", "product-itemTV");
+  const itemTV = product.type;
+  TVelement.textContent = itemTV;
 
-const list = document.getelementById("product");
-list.appendChild(TVelement);
+  const list = document.getelementById("product");
+  list.appendChild(TVelement);
+}
 
+for (let index = 0; index < inventory.length; index++) {
+  const product = inventory[index];
+  displayProduct(product);
+}
 
 //Opdracht5
 // [ ] presenteer tv in bepaalde context op de pagina
