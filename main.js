@@ -162,3 +162,85 @@ const inventory = [
   },
 ];
 
+function countTVtosell(televisions) {
+  let totalCount = 0;
+  for (const television of televisions) {
+    const tosellofthistype = television.originalStock - television.sold;
+    totalCount = totalCount + tosellofthistype;
+  }
+  return totalCount;
+}
+const totalCount = countTVtosell(inventory);
+
+const numbertoSell = document.getElementById("numbertoSell");
+numbertoSell.textContent = totalCount;
+
+
+const specTypes = inventory.map((inventory) => {
+  return inventory.brand + " type " + inventory.type;
+})
+//console.log(specTypes);
+
+
+const TypeSoldout = inventory.filter((inventory) => {
+  return inventory.sold == inventory.originalStock;
+})
+//console.log(TypeSoldout);
+
+
+const OptAmbi = inventory.filter((inventory) => {
+  return inventory.options.ambiLight === inventory.options.ambiLight;
+})
+//console.log(OptAmbi);
+
+const TVPriceSort = inventory.sort((TVA, TVB) => {
+  return TVA.price - TVB.price;
+});
+//console.log(TVPriceSort)
+
+
+function countRE(televisions) {
+  let totalCountRE = 0;
+  for (const television of televisions) {
+    const tosoldofthistype = television.originalStock * television.price;
+    totalCountRE = totalCountRE + tosoldofthistype;
+  }
+  return totalCountRE;
+}
+const totalCountRE = countRE(inventory);
+
+const RE = document.getElementById("RE");
+RE.textContent = "€" +totalCountRE;
+
+
+function countRT(televisions) {
+  let totalCountRT = 0;
+  for (const television of televisions) {
+    const tosoldyetofthistype = television.sold * television.price;
+    totalCountRT = totalCountRT + tosoldyetofthistype;
+  }
+  return totalCountRT;
+}
+const totalCountRT = countRT(inventory);
+
+const RT = document.getElementById("RT");
+RT.textContent = "€" +totalCountRT;
+
+//-
+
+const TVelement = document.createElement("li");
+TVelement.setAttribute("class", "product-list-itemTV");
+const itemsTV = inventory[0].type;
+TVelement.textContent = itemsTV;
+
+const list = document.getelementById("product");
+list.appendChild(TVelement);
+
+
+//Opdracht5
+// [ ] presenteer tv in bepaalde context op de pagina
+
+//bonus
+// [ ] maak 3 knoppen
+
+
