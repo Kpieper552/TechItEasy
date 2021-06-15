@@ -161,3 +161,115 @@ const inventory = [
     sold: 8,
   },
 ];
+
+function countTVtosell(televisions) {
+  let totalCount = 0;
+  for (const television of televisions) {
+    const tosellofthistype = television.originalStock - television.sold;
+    totalCount = totalCount + tosellofthistype;
+  }
+  return totalCount;
+}
+const totalCount = countTVtosell(inventory);
+
+const numbertoSell = document.getElementById("numbertoSell");
+numbertoSell.textContent = totalCount;
+
+
+const specTypes = inventory.map((inventory) => {
+  return inventory.brand + " type " + inventory.type;
+})
+//console.log(specTypes);
+
+
+const TypeSoldout = inventory.filter((inventory) => {
+  return inventory.sold == inventory.originalStock;
+})
+//console.log(TypeSoldout);
+
+
+const OptAmbi = inventory.filter((inventory) => {
+  return inventory.options.ambiLight === inventory.options.ambiLight;
+})
+//console.log(OptAmbi);
+
+const TVPriceSort = inventory.sort((TVA, TVB) => {
+  return TVA.price - TVB.price;
+});
+//console.log(TVPriceSort)
+
+
+function countRE(televisions) {
+  let totalCountRE = 0;
+  for (const television of televisions) {
+    const tosoldofthistype = television.originalStock * television.price;
+    totalCountRE = totalCountRE + tosoldofthistype;
+  }
+  return totalCountRE;
+}
+const totalCountRE = countRE(inventory);
+
+const RE = document.getElementById("RE");
+RE.textContent = "€" +totalCountRE;
+
+
+function countRT(televisions) {
+  let totalCountRT = 0;
+  for (const television of televisions) {
+    const tosoldyetofthistype = television.sold * television.price;
+    totalCountRT = totalCountRT + tosoldyetofthistype;
+  }
+  return totalCountRT;
+}
+const totalCountRT = countRT(inventory);
+
+const RT = document.getElementById("RT");
+RT.textContent = "€" +totalCountRT;
+
+//-onderstaande functie krijg ik niet gewerkt!!!!
+
+function displayProduct(product) {
+  const itemTVs = document.createElement("li");
+  itemTVs.setAttribute("class", "product");
+  const itemTV = product.type;
+  itemTV.textContent = itemTV;
+const list = document.getelementById("product");
+  list.appendChild(TVelement);
+}
+
+for (let index = 0; index < inventory.length; index++) {
+  const product = inventory[index];
+  displayProduct(product);
+}
+// bovenstaande opdracht met functie displayProduct geeft geen tv.types weer op de pagina
+// -- de verwijzing gaat ergens verkeerd, maar ik weet niet waar!!
+
+
+//Opdracht5
+
+const TVObject = inventory.map((inventory) => {
+  return inventory.brand + " | " + inventory.name + " | " + inventory.type + "| price €" + inventory.price + ",--  |" + inventory.availableSizes + "  inches --> to CM " + (inventory.availableSizes = inventory.availableSizes * 2.54);
+})
+//console.log(TVObject);
+// uitkomt klopt behalve bij een aantal size inch to cm zie notes file
+// daarna krijg ik onderstaande niet op de pagina!
+
+document.createElement("TVObject");
+TVObject.appendChild("TVOBJ");
+
+//5c display functie werkt nog niet vanuit 4!
+
+//bonus// knop met addEventlistener
+
+function SoldOUT(television) {
+const TypeSoldout = inventory.filter((inventory) => {
+  return inventory.sold == inventory.originalStock;
+});
+}
+document.addEventListener("alert");
+SoldOUT.appendChild("alert");
+// knop werkt niet . de appendChild linkt niet!
+//console.log(TypeSoldout);
+
+
+
